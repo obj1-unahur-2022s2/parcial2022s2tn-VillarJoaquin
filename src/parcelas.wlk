@@ -31,19 +31,24 @@ class Parcela {
 	method diferenciaDeSolDe(unaPlanta){
 		return self.horasDeSol() - unaPlanta.horasDeSolTolera()
 	}
-	method 
 	
-}
+}	
+
 
 
 class ParcelaEco inherits Parcela {
 	
+	method seAsociaBien(unaPlanta){
+		return !self.tieneComplicaciones() and unaPlanta.parcelaIdeal(self)		
+	}
 	
 }
 
 class ParcelaIndus inherits Parcela {
 	
-	
+	method seAsociaBien(unaPlanta){
+		return plantas.count() <= 2 and unaPlanta.esFuerte()
+	}
 	
 }
 
