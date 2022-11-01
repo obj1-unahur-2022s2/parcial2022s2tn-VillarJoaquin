@@ -34,3 +34,18 @@ class Parcela {
 	method 
 	
 }
+
+
+class ParcelaEco inherits Parcela {
+	
+	
+}
+
+class ParcelaIndus inherits Parcela {
+	
+	
+	
+}
+
+
+
