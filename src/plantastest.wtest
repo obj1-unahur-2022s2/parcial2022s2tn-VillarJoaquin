@@ -1,17 +1,34 @@
 import plantas.*
 describe "Test de Plantas"  {
 	
-	const menta1 = new Menta()
-	
-	method initialize() {
-		menta1.valor(3)
-	}
-	
 	test "Menta - test de ejemplo" {
-		assert.equals(3, menta1.valor())
-
+		const menta1 = new Menta(anioDeObtencion = 1956 ,altura = 1 )
+		assert.that(menta1.daNuevasSemillas())
+		assert.equals(3, menta1.espacioQueOcupa())
 	}
-	
+  
+	test "Una menta de 0.3 mts , no da semilla , ocupa 0.9 mt2" {
+		const menta1 = new Menta(anioDeObtencion = 1956 ,altura = 0.3 )
+		assert.notThat(menta1.daNuevasSemillas())
+		assert.equals(0.9,menta1.espacioQueOcupa())
+	}
+	test " Soja de 0.6 y anioDeObtencion 2009 , 
+		tolerancia 7 hs , no da semillas y ocupa 0.3 mt2" {
+		const soja1 = new Soja(anioDeObtencion = 2009 ,altura = 0.6 )
+		assert.equals(7,soja1.horasDeSolTolera())
+		assert.notThat(soja1.daNuevasSemillas())
+		assert.equals(0.3,soja1.espacioQueOcupa())
+		}
+	test " Quinoa tolera 12 hs , semilla del 2010 , da semillas"{
+		const cepa1  = new CepaDeQuinoa (anioDeObtencion = 2010 ,altura = 1 , cantidadDeHorasSol = 12 )
+		assert.equals(12,cepa1.horasDeSolTolera())
+		assert.that(cepa1.daNuevasSemillas())
+	}
+	test " Quinoa tolera 9 hs , semilla del 2001 , da semillas"{
+		const cepa2  = new CepaDeQuinoa (anioDeObtencion = 2001 ,altura = 1 , cantidadDeHorasSol = 9 )
+		assert.equals(9,cepa2.horasDeSolTolera())
+		assert.that(cepa2.daNuevasSemillas())
+	}
 }
 
 

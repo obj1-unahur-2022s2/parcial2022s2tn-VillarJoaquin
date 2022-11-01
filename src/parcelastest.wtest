@@ -1,2 +1,32 @@
 import parcelas.*
+import plantas.*
+
+describe "Test de Parcelas"  {
+	
+	test " Parcela de 20 mts ancho , por 1 mts largo , 8 hs de sol"{
+		const parcela1 = new Parcela(ancho = 20 ,largo = 1, horasDeSol = 8)
+		const parcela2 = new Parcela(ancho = 10 ,largo = 2, horasDeSol = 5)
+		const parcela3 = new Parcela(ancho = 15 ,largo = 3, horasDeSol = 7)
+		const parcela4 = new Parcela(ancho = 30 ,largo = 4, horasDeSol = 6)
+		const menta1 = new Menta(anioDeObtencion = 1956 ,altura = 0.3 )
+		const menta2 = new Menta(anioDeObtencion = 1956 ,altura = 0.3 )
+		const soja1 = new Soja(anioDeObtencion = 1956 ,altura = 0.3 )
+		const soja2 = new Soja(anioDeObtencion = 1956 ,altura = 0.3 )
+		const cepaQuinoa1 = new CepaDeQuinoa(anioDeObtencion = 1956 ,altura = 0.3,cantidadDeHorasSol = 4 )
+		parcela1.plantarUnaPlanta(menta1)
+		parcela1.plantarUnaPlanta(menta2)
+		parcela1.plantarUnaPlanta(soja2)
+		parcela1.plantarUnaPlanta(soja2)
+			
+		assert.equals(20 , parcela1.superficie())		
+		assert.throwsExceptionWithMessage("No se puede plantar mas plantas", 
+		{ parcela1.plantarUnaPlanta(cepaQuinoa1) })	
+	}			
+}
+		   
+	
+	
+	
+	
+	
 
