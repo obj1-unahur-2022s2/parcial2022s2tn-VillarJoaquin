@@ -75,7 +75,7 @@ class Quinoa inherits Plantas {
 		return	0.5
 	}
 	override method parcelaIdeal(unaParcela){
-		return unaParcela.plantas({p => p.altura() > 1.5})
+		return !unaParcela.any({p => p.altura() > 1.5})
 	}
 	
 }
@@ -95,7 +95,7 @@ class SojaTransgenica inherits Soja {
 		return false
 	}
 	override method parcelaIdeal(unaParcela){
-		return unaParcela.plantas({p => p.size() == 1})
+		return unaParcela.plantas().size() == 1
 	}
 	
 }

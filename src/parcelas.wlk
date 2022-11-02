@@ -4,7 +4,7 @@ class Parcela {
 	var property ancho
 	var property largo
 	var property horasDeSol
-	const property plantas = []
+	const property plantas = #{}
 	
 	method superficie(){
 		return ancho * largo
@@ -15,8 +15,8 @@ class Parcela {
 		else
 			return (self.superficie() / 3) + largo
 	}
-	method tieneComplicaciones(){
-		plantas.any({ p => p.horasDeSolTolera() < horasDeSol})
+	method tieneComplicaciones(unaPlanta){
+		return plantas.any({ p => unaPlanta.horasDeSolTolera() < horasDeSol})
 	}
 	
 	method plantarUnaPlanta(unaPlanta) {
@@ -39,7 +39,7 @@ class Parcela {
 class ParcelaEco inherits Parcela {
 	
 	method seAsociaBien(unaPlanta){
-		return !self.tieneComplicaciones() and unaPlanta.parcelaIdeal(self)		
+		return (!self.tieneComplicaciones(unaPlanta) and unaPlanta.parcelaIdeal(self))		
 	}
 	
 }
@@ -47,7 +47,7 @@ class ParcelaEco inherits Parcela {
 class ParcelaIndus inherits Parcela {
 	
 	method seAsociaBien(unaPlanta){
-		return plantas.count() <= 2 and unaPlanta.esFuerte()
+		return plantas.size() <= 2 and unaPlanta.esFuerte()
 	}
 	
 }
