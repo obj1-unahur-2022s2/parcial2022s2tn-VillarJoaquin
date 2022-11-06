@@ -1,3 +1,17 @@
+/*
+ * clase Quinoa: No está mal la opción de hacer una subclase para la
+ * cepa de Quinoa, pero en ese caso, deberías haber definido
+ * un método abstracto en la clase Quinoa para que no se permitan instancias 
+ * de la misma.
+ * 
+ * SojaTransgenica: Para resolver el método parcelaIdeal(unaParcela) 
+ * hay que preguntarle a la Parcela si su máxima cantidad de cultivos 
+ * permitido es igual a 1. Aunque una mejor solución, pensando en que se 
+ * define como monocultivo, podría ser preguntar si la parcela
+ * está vacía de la forma unaParcela.plantas().isEmpty() o mejor, definir un
+ * método en Parcela que te informe si está vacía. 
+ */
+
 import parcelas.*
 
 class Plantas {
@@ -52,7 +66,7 @@ class Soja inherits Plantas {
 		else return 9
 	}
 	override method daNuevasSemillas() {
-	 return super() or anioDeObtencion > 2007 and altura > 1
+	 return super() or (anioDeObtencion > 2007 and altura > 1)
 	}
 	override method espacioQueOcupa() {
 		return	altura / 2
@@ -64,7 +78,6 @@ class Soja inherits Plantas {
 }
 
 class Quinoa inherits Plantas {
-	
 
 	
 	override method daNuevasSemillas() {
@@ -77,11 +90,11 @@ class Quinoa inherits Plantas {
 	override method parcelaIdeal(unaParcela){
 		return !unaParcela.any({p => p.altura() > 1.5})
 	}
-	
 }
 
 
 class CepaDeQuinoa inherits Quinoa {
+
 	var property cantidadDeHorasSol 
 	
 	override method horasDeSolTolera(){
@@ -95,7 +108,8 @@ class SojaTransgenica inherits Soja {
 		return false
 	}
 	override method parcelaIdeal(unaParcela){
-		return unaParcela.plantas().size() == 1
+
+		return unaParcela.cantidadMaxima() == 1
 	}
 	
 }
