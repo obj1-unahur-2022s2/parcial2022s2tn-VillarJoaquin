@@ -1,13 +1,21 @@
+/*
+ * No se debían generar instancias de la clase Parcela, ya que el enunciado indica
+ * que debíamos diferenciar las parcelas en 2 tipos: ecologicas e industriales. 
+ * 
+ * parcela2, parcela3, parcela4, soja1 no se utilizan en ningún test.
+ */
+
+
 import parcelas.*
 import plantas.*
 
 describe "Test de Parcelas"  {
 	
 	test " Parcela de 20 mts ancho , por 1 mts largo , 8 hs de sol"{
-		const parcela1 = new Parcela(ancho = 20 ,largo = 1, horasDeSol = 8)
-		const parcela2 = new Parcela(ancho = 10 ,largo = 2, horasDeSol = 5)
-		const parcela3 = new Parcela(ancho = 15 ,largo = 3, horasDeSol = 7)
-		const parcela4 = new Parcela(ancho = 30 ,largo = 4, horasDeSol = 6)
+		const parcela1 = new ParcelaEco(ancho = 20 ,largo = 1, horasDeSol = 8)
+		const parcela2 = new ParcelaEco(ancho = 10 ,largo = 2, horasDeSol = 5)
+		const parcela3 = new ParcelaEco(ancho = 15 ,largo = 3, horasDeSol = 7)
+		const parcela4 = new ParcelaEco(ancho = 30 ,largo = 4, horasDeSol = 6)
 		const menta1 = new Menta(anioDeObtencion = 1956 ,altura = 0.3 )
 		const menta2 = new Menta(anioDeObtencion = 1956 ,altura = 0.3 )
 		const soja1 = new Soja(anioDeObtencion = 1956 ,altura = 0.3 )

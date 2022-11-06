@@ -1,15 +1,25 @@
+/*
+ * Faltó importar los objetos del archivo plantas.* 
+ * Falta método para poder agregar parcelas a la colección parcelas. Te dejo un ejemplo
+ * de como hacerlo.
+ * 
+ * El método promedioDePlantas(plantas) no es correcto. Te dejo una posible solución.
+ * 
+ * El método parcelaMasAutosustentable(plantas) no es correcto. Te dejo una posible solución.
+ * 
+ */
+import plantas.*
 import parcelas.*
 
 object inta {
 	const parcelas = #{}
 	
-	method promedioDePlantas(plantas){
-		return plantas.size() / parcelas.size() 
-	}
+	method agregarParcela(unaParcela) {parcelas.add(unaParcela)}
 	
-	method parcelaMasAutosustentable(plantas){
-		return parcelas.size({ p => p > 4}) and  		
-			   parcelas.plantas({p => plantas.seAsociaBien(p)})
-		
-	}
+	method sumaDePlantasPorParcela() = parcelas.sum({p => p.plantas().size()}) 
+	method promedioDePlantasPorParela() = self.sumaDePlantasPorParcela() / parcelas.size()
+	
+	method parcelasConMasDeCuatroPlantas() = parcelas.filter({p => p.plantas().size() > 4})
+	method masAutoSustentable() = self.parcelasConMasDeCuatroPlantas().max({p => p.cantidadDePlantasBienAsociadas()})
+
 }
